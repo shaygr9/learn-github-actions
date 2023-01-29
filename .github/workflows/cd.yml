@@ -17,12 +17,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
+      - name: Setup Node version
+        uses: action/set-up-node@v3
+        with:
+          node-version: 18
+
       - name: Install modules
         run: npm ci
 
       - name: build
-        run: npm run build -- --env color=${{ secrets.COLOR }}
-
+        run: |
+          image=$(npm run params-for-build ${{ secrets.PRIVATE_GITHUB_TOKEN }} | grep https) && 
+          npm run build -- --env color=${{secrets.COLOR}} image=$image
+    
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
