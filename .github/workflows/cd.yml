@@ -27,7 +27,7 @@ jobs:
 
       - name: build
         run: |
-          image=$(npm run params-for-build ${{ secrets.PRIVATE_GITHUB_TOKEN }} | grep https) && 
+          image=$(npm run params-for-build ${{ secrets.PRIVATE_GITHUB_TOKEN }} | grep https) && \
           npm run build -- --env color=${{secrets.COLOR}} image=$image
     
       - name: Setup Pages
