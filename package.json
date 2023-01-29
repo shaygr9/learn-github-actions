@@ -8,6 +8,7 @@
     "check-types": "tsc",
     "eslint:test": "eslint \"**/*.[jt]s\" --max-warnings 0",
     "build": "rm -rf ./dist && webpack --mode=production",
+    "params-for-build": "tsx scripts/addParamsToBuild.ts", 
     "stats:build": "webpack --json=stats.json --mode production",
     "start": "rm -rf ./dist && webpack serve --mode=development"
   },
